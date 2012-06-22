@@ -5,6 +5,7 @@ class SklikApi::Access
   def self.set args = {}
     args.symbolize_keys!
     #check required arguments
+    raise ArgumentError, "endpoint path is required" unless args[:endpoint_path]
     raise ArgumentError, "email is required" unless args[:email]
     raise ArgumentError, "password is required" unless args[:password]
     
@@ -17,6 +18,11 @@ class SklikApi::Access
 
   def self.get
     Marshal.load( Marshal.dump (@args )) 
+  end
+
+  # return endpoint path
+  def self.endpoint_path
+    @args[:endpoint_path].to_s
   end
   
   #return email

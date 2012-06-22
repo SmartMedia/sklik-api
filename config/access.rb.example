@@ -3,6 +3,7 @@
 ### TEST ACCOUNT
 
 SklikApi::Access.set(
-    :email => "email@seznam.cz",
-    :password => "password"
-  )
+  :endpoint_path => '/sandbox/RPC2',
+  :email => "email@seznam.cz",
+  :password => "password"
+)

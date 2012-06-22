@@ -55,7 +55,8 @@ campaign_hash = {
 
 #you can set it before every action to sklik api, if you have multiple accounts :-)
 SklikApi::Access.set(
-  :email => "your_email@seznam.cz",
+  :endpoint_path => '/RPC2',
+  :email => "email@seznam.cz",
   :password => "password"
 )
 
