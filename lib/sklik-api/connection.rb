@@ -59,7 +59,7 @@ class SklikApi
       begin 
         #get response from sklik
         param = connection.call( method, get_session, *args ).symbolize_keys
-        if param[:status] == 200
+        if [200, 404].include?(param[:status])
           return yield(param)
         elsif param[:status] == 406
           raise ArgumentError, "Sklik returned: #{method}: #{param[:statusMessage]} #{args.inspect}"
