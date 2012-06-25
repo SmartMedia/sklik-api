@@ -79,6 +79,19 @@ class CampaignTest < Test::Unit::TestCase
                {:id=>8, :name=>"Partnerské vyhledávače"}]
     end
 
+    should "get stats" do
+      @campaign = SklikApi::Campaign.new(@test_campaign_hash)
+      @campaign.save
+      assert_equal ({"conversions"=>0,
+        "transactions"=>0,
+        "money"=>0,
+        "value"=>0,
+        "avgPosition"=>0.0,
+        "impressions"=>0,
+        "clicks"=>0}),
+        @campaign.stats(:to => XMLRPC::DateTime.new(2011,01,01,00,00,00), :from => XMLRPC::DateTime.new(2012,01,01,00,00,00))
+    end
+
     context "create" do
       setup do
         @campaign = SklikApi::Campaign.new(@test_campaign_hash)

@@ -63,11 +63,17 @@ class SklikApi
         @args["#{self.class.to_s.downcase.split(":").last}_id".to_sym] = out
         @args
       end
-            
+
       def update_object
         out = connection.call("#{self.class::NAME}.setAttributes", *update_args ) { |param| true }
       end
-      
+
+      def stats(args)
+        out = connection.call("#{self.class::NAME}.stats", @args[:campaign_id], args[:from], args[:to]) { |param|
+          param[:stats]
+        }
+      end
+
       def create_args
         raise(NoMethodError, "Please implement 'create_args' method in class: #{self.class} - should return array which will be placed into create method")
       end
