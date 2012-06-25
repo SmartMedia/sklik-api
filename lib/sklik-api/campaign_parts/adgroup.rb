@@ -149,6 +149,12 @@ Example of input hash
       end
     end
 
+    def stats(args)
+      out = connection.call("#{self.class::NAME}.stats", @args[:adgroup_id], args[:from], args[:to]) { |param|
+        param[:stats]
+      }
+    end
+
   end
 end
       
