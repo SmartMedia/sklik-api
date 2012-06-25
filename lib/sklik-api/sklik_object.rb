@@ -68,8 +68,8 @@ class SklikApi
         out = connection.call("#{self.class::NAME}.setAttributes", *update_args ) { |param| true }
       end
 
-      def stats(args)
-        out = connection.call("#{self.class::NAME}.stats", @args[:campaign_id], args[:from], args[:to]) { |param|
+      def stats(id, args)
+        out = connection.call("#{self.class::NAME}.stats", id, args[:from], args[:to]) { |param|
           param[:stats]
         }
       end

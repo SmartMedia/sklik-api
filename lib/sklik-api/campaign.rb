@@ -216,12 +216,10 @@ Example of input hash
         end
       end
     end
-  end
 
-  def stats(args)
-    out = connection.call("#{self.class::NAME}.stats", @args[:campaign_id], args[:from], args[:to]) { |param|
-      param[:stats]
-    }
+    def stats(args)
+      super(@args[:campaign_id], args)
+    end
   end
 end
 
