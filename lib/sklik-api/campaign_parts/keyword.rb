@@ -104,6 +104,10 @@ Example of input hash
         create        
       end
     end 
+
+    def stats(args)
+      super(@args[:keyword_id], args)
+    end
   end
 end
       

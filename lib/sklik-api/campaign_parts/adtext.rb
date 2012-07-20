@@ -94,6 +94,10 @@ Example of input hash
         create        
       end
     end
+
+    def stats(args)
+      super(@args[:adtext_id], args)
+    end
   end
 end
       
