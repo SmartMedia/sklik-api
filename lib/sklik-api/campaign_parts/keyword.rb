@@ -108,6 +108,12 @@ Example of input hash
     def stats(args)
       super(@args[:keyword_id], args)
     end
+
+    def self.stats(args)
+      connection.call("keywords.stats", args[:keyword_ids], args[:from], args[:to]) { |param|
+        param[:keywordStats]
+      }
+    end
   end
 end
       
