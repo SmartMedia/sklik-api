@@ -24,5 +24,9 @@ class SklikApi
       out.select!{|c| c.args[:email] == args[:email]} if args[:email]
       return out
     end
+
+    def stats(args)
+      super(@args[:customer_id], args)
+    end
   end
 end
