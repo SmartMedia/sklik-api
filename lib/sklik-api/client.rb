@@ -5,14 +5,16 @@ class SklikApi
     NAME = "client"
 
     include Object
-        
+
     def initialize args = {}
       super args
     end
-    
+
     def self.find args = {}
       out = connection.call("client.getAttributes") { |param|
-        ([param[:user]]|param[:foreignAccounts]).collect{|u| 
+        accounts = param[:user] ? [param[:user]] : []
+        accounts += param[:foreignAccounts]
+        accounts.collect{|u|
           u.symbolize_keys!
           SklikApi::Client.new(
             :customer_id => u[:userId],
