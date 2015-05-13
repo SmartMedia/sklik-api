@@ -70,7 +70,7 @@ class SklikApi
 
       def stats(id, args)
         out = connection.call("#{self.class::NAME}.stats", id, args[:from], args[:to]) { |param|
-          param[:stats]
+          param
         }
       end
 
